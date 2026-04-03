@@ -1,6 +1,6 @@
 # sizeof
 
-sizeof is a simple command line tool to view remote file size without downloading it.
+sizeof is a simple command line tool to view size of local or remote files.
 
 ## Install
 
