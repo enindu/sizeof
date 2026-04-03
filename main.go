@@ -1,5 +1,4 @@
-// sizeof is a simple command line tool to view remote file size without
-// downloading it.
+// sizeof is a simple command line tool to view size of local or remote files.
 // Copyright (C) 2026 Enindu Alahapperuma
 //
 // sizeof is free software: you can redistribute it and/or modify it under the
@@ -14,8 +13,23 @@
 // You should have received a copy of the GNU General Public License along with
 // sizeof. If not, see <https://www.gnu.org/licenses/>.
 
-// sizeof is a simple command line tool to view remote file size without
-// downloading it.
+// sizeof is a simple command line tool to view size of local or remote files.
+//
+// Usage:
+//
+//	sizeof <command>:<subcommand> [arguments]
+//	sizeof [flags]
+//
+// Available commands:
+//
+//	file
+//
+// Available flags:
+//
+//	-v, --version # Display version message.
+//	-h, --help    # Display help message.
+//
+// Use "sizeof <command>:help" to see more information about commands.
 package main
 
 import (
@@ -38,8 +52,8 @@ var (
 
 func main() {
 	dispatchers := map[string]func([]string){
-		"file:url":  file.URL,
-		"file:help": file.Help,
+		"file:remote": file.Remote,
+		"file:help":   file.Help,
 	}
 
 	inputs := os.Args

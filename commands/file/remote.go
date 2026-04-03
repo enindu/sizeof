@@ -21,20 +21,20 @@ import (
 	"strings"
 )
 
-func URL(a []string) {
+func Remote(a []string) {
 	if len(a) != 1 {
 		Help(nil)
 		return
 	}
 
-	link, err := url.Parse(a[0])
+	path, err := url.Parse(a[0])
 
 	if err != nil {
 		erroPrinter.Print("%s\n", err.Error())
 		return
 	}
 
-	request, err := http.NewRequest(http.MethodGet, link.String(), nil)
+	request, err := http.NewRequest(http.MethodGet, path.String(), nil)
 
 	if err != nil {
 		erroPrinter.Print("%s\n", err.Error())

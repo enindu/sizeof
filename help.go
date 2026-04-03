@@ -16,19 +16,19 @@ package main
 
 func help() {
 	message := `Usage:
-	
+
 	sizeof <command>:<subcommand> [arguments]
 	sizeof [flags]
-	
+
 Available commands:
 
 	file
-	
+
 Available flags:
 
 	-v, --version # Display version message.
 	-h, --help    # Display help message.
-	
+
 Use "sizeof <command>:help" to see more information about commands.`
 
 	reguPrinter.Print("%s\n", message)

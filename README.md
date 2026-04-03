@@ -19,13 +19,13 @@ sizeof <command>:<subcommand> [arguments]
 sizeof [flags]
 ```
 
-To display version message:
+Display version message:
 
 ```
 sizeof -v # Or "sizeof --version"
 ```
 
-To display help message:
+Display help message:
 
 ```
 sizeof -h # Or "sizeof --help"

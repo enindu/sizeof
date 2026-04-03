@@ -21,12 +21,12 @@ func Help(a []string) {
 	
 Available subcommands and arguments:
 
-	url [link] # Find size of link.
-	help       # Display help message.
+	remote [path] # Find size of a remote file.
+	help          # Display help message.
 	
 Example:
 
-	sizeof file:url https://fastly.mirror.pkgbuild.com/iso/2026.04.01/archlinux-2026.04.01-x86_64.iso`
+	sizeof file:remote https://fastly.mirror.pkgbuild.com/iso/2026.04.01/archlinux-2026.04.01-x86_64.iso`
 
 	reguPrinter.Print("%s\n", message)
 }
