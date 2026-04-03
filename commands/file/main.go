@@ -12,12 +12,18 @@
 // You should have received a copy of the GNU General Public License along with
 // sizeof. If not, see <https://www.gnu.org/licenses/>.
 
-package main
+package file
 
-func version() {
-	message := `sizeof v1.1.0
-Copyright (C) 2026 Enindu Alahapperuma
-Licensed under GNU GPL 3.0`
+import (
+	"errors"
 
-	reguPrinter.Print("%s\n", message)
-}
+	"github.com/enindu/palette"
+)
+
+var errSizeUnknown error = errors.New("Size is unknown")
+
+var (
+	reguPrinter *palette.Printer = palette.NewPrinterRegu()
+	infoPrinter *palette.Printer = palette.NewPrinterInfo()
+	erroPrinter *palette.Printer = palette.NewPrinterErro()
+)

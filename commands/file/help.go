@@ -12,12 +12,21 @@
 // You should have received a copy of the GNU General Public License along with
 // sizeof. If not, see <https://www.gnu.org/licenses/>.
 
-package main
+package file
 
-func version() {
-	message := `sizeof v1.1.0
-Copyright (C) 2026 Enindu Alahapperuma
-Licensed under GNU GPL 3.0`
+func Help(a []string) {
+	message := `Usage:
+	
+	sizeof file:<subcommand> [arguments]
+	
+Available subcommands and arguments:
+
+	url [link] # Find size of link.
+	help       # Display help message.
+	
+Example:
+
+	sizeof file:url https://fastly.mirror.pkgbuild.com/iso/2026.04.01/archlinux-2026.04.01-x86_64.iso`
 
 	reguPrinter.Print("%s\n", message)
 }

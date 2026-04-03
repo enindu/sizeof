@@ -14,10 +14,22 @@
 
 package main
 
-func version() {
-	message := `sizeof v1.1.0
-Copyright (C) 2026 Enindu Alahapperuma
-Licensed under GNU GPL 3.0`
+func help() {
+	message := `Usage:
+	
+	sizeof <command>:<subcommand> [arguments]
+	sizeof [flags]
+	
+Available commands:
+
+	file
+	
+Available flags:
+
+	-v, --version # Display version message.
+	-h, --help    # Display help message.
+	
+Use "sizeof <command>:help" to see more information about commands.`
 
 	reguPrinter.Print("%s\n", message)
 }

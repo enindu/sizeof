@@ -15,19 +15,20 @@ go install github.com/enindu/sizeof@latest
 You can run sizeof using following syntax.
 
 ```
-sizeof [flags] [arguments]
+sizeof <command>:<subcommand> [arguments]
+sizeof [flags]
 ```
 
 To display version message:
 
 ```
-sizeof -v
+sizeof -v # Or "sizeof --version"
 ```
 
 To display help message:
 
 ```
-sizeof -h
+sizeof -h # Or "sizeof --help"
 ```
 
 ## License
