@@ -1,4 +1,4 @@
-//  This file is part of sizeof.
+// This file is part of sizeof.
 //
 // sizeof is free software: you can redistribute it and/or modify it under the
 // terms of the GNU General Public License as published by the Free Software
@@ -16,25 +16,18 @@ package file
 
 import (
 	"net/http"
-	"net/url"
 	"strconv"
 	"strings"
 )
 
 func Remote(a []string) {
 	if len(a) != 1 {
-		Help(nil)
+		Help([]string{errArgumentsInvalid.Error()})
 		return
 	}
 
-	path, err := url.Parse(a[0])
-
-	if err != nil {
-		erroPrinter.Print("%s\n", err.Error())
-		return
-	}
-
-	request, err := http.NewRequest(http.MethodGet, path.String(), nil)
+	path := a[0]
+	request, err := http.NewRequest(http.MethodGet, path, nil)
 
 	if err != nil {
 		erroPrinter.Print("%s\n", err.Error())
@@ -67,14 +60,5 @@ func Remote(a []string) {
 		return
 	}
 
-	switch {
-	case size > 1_000*1_000*1_000:
-		infoPrinter.Print("%.2f GB\n", size/(1_000*1_000*1_000))
-	case size > 1_000*1_000:
-		infoPrinter.Print("%.2f MB\n", size/(1_000*1_000))
-	case size > 1_000:
-		infoPrinter.Print("%.2f KB\n", size/1_000)
-	default:
-		infoPrinter.Print("%.2f B\n", size)
-	}
+	printSize(size)
 }

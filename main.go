@@ -41,8 +41,8 @@ import (
 )
 
 var (
-	errInstructionNotFound error = errors.New("Instruction is not found, use \"-h\" or \"--help\" to see help message")
-	errCommandInvalid      error = errors.New("Command is invalid, use \"-h\" or \"--help\" to see help message")
+	errInstructionNotFound error = errors.New("Instruction is not found, use \"-h\" or \"--help\" to see help message.")
+	errCommandInvalid      error = errors.New("Command is invalid, use \"-h\" or \"--help\" to see help message.")
 )
 
 var (
@@ -52,6 +52,7 @@ var (
 
 func main() {
 	dispatchers := map[string]func([]string){
+		"file:local":  file.Local,
 		"file:remote": file.Remote,
 		"file:help":   file.Help,
 	}

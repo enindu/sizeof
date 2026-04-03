@@ -1,4 +1,4 @@
-//  This file is part of sizeof.
+// This file is part of sizeof.
 //
 // sizeof is free software: you can redistribute it and/or modify it under the
 // terms of the GNU General Public License as published by the Free Software
@@ -15,17 +15,23 @@
 package file
 
 func Help(a []string) {
+	if len(a) > 0 {
+		erroPrinter.Print("%s\n\n", a[0])
+	}
+
 	message := `Usage:
-	
+
 	sizeof file:<subcommand> [arguments]
-	
+
 Available subcommands and arguments:
 
+	local [path]  # Find size of a local file.
 	remote [path] # Find size of a remote file.
 	help          # Display help message.
-	
-Example:
 
+Examples:
+
+	sizeof file:local /etc/pacman.d/mirrorlist
 	sizeof file:remote https://fastly.mirror.pkgbuild.com/iso/2026.04.01/archlinux-2026.04.01-x86_64.iso`
 
 	reguPrinter.Print("%s\n", message)

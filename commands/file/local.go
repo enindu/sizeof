@@ -14,32 +14,32 @@
 
 package file
 
-import (
-	"errors"
+import "os"
 
-	"github.com/enindu/palette"
-)
-
-var (
-	errArgumentsInvalid error = errors.New("Arguments are invalid.")
-	errSizeUnknown      error = errors.New("Size is unknown.")
-)
-
-var (
-	reguPrinter *palette.Printer = palette.NewPrinterRegu()
-	infoPrinter *palette.Printer = palette.NewPrinterInfo()
-	erroPrinter *palette.Printer = palette.NewPrinterErro()
-)
-
-func printSize(s float64) {
-	switch {
-	case s > 1_024*1_024*1_024:
-		infoPrinter.Print("%.2f GiB\n", s/(1_024*1_024*1_024))
-	case s > 1_024*1_024:
-		infoPrinter.Print("%.2f MiB\n", s/(1_024*1_024))
-	case s > 1_024:
-		infoPrinter.Print("%.2f KiB\n", s/1_024)
-	default:
-		infoPrinter.Print("%.2f B\n", s)
+func Local(a []string) {
+	if len(a) != 1 {
+		Help([]string{errArgumentsInvalid.Error()})
+		return
 	}
+
+	path := a[0]
+	file, err := os.Open(path)
+
+	if err != nil {
+		erroPrinter.Print("%s\n", err.Error())
+		return
+	}
+
+	defer file.Close()
+
+	info, err := file.Stat()
+
+	if err != nil {
+		erroPrinter.Print("%s\n", err.Error())
+		return
+	}
+
+	size := float64(info.Size())
+
+	printSize(size)
 }
